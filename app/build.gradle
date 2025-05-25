@@ -16,10 +16,12 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        // Disable the release build type for NixOS compatibility
+        release.enabled = false
     }
     compileOptions {
         sourceCompatibility = 1.8
@@ -52,24 +54,24 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':libtd')
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0-rc01'
-    implementation "androidx.core:core-ktx:1.3.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation "androidx.core:core-ktx:1.7.0"
 
     implementation "androidx.compose.runtime:runtime:$compose"
-    implementation "androidx.activity:activity-compose:1.3.0-alpha07"
+    implementation "androidx.activity:activity-compose:1.4.0"
     implementation "androidx.compose.ui:ui:$compose"
     implementation "androidx.compose.ui:ui-tooling:$compose"
     implementation "androidx.compose.material:material:$compose"
     implementation "androidx.compose.material:material-icons-extended:$compose"
 
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha10"
-    implementation "androidx.paging:paging-compose:1.0.0-alpha08"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
-    implementation 'com.google.accompanist:accompanist-coil:0.9.0'
+    implementation "androidx.navigation:navigation-compose:2.4.1"
+    implementation "androidx.paging:paging-compose:1.0.0-alpha14"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
+    implementation 'com.google.accompanist:accompanist-coil:0.15.0'
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha01'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 }

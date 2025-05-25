@@ -1,1 +1,3 @@
-include ':app', ':libtd'
+include ':app'
+include ':libtd'
+project(':libtd').projectDir = new File(rootDir, 'tdlib')

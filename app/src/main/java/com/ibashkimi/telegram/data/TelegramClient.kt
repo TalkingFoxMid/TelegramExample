@@ -198,7 +198,7 @@ class TelegramClient @Inject constructor(
         client.send(TdApi.DownloadFile(fileId, 1, 0, 0, true)) {
             when (it.constructor) {
                 TdApi.Ok.CONSTRUCTOR -> {
-                    offer(Unit)
+                    trySend(Unit)
                 }
                 else -> {
                     cancel("", Exception(""))
